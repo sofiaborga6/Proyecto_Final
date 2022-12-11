@@ -9,9 +9,13 @@
 <body>
 
     <h1>Lista de mis familiares</h1>
+    <a href="/mi-familia/alta">Nuevo Familiar</a>
     <ul>
     {% for familiar in lista_familiares %}
-         <li> Nombre: {{familiar.nombre}}, Dirección: {{familiar.direccion}}, Pasaporte: {{familiar.numero_pasaporte}}, Fecha_nacimiento: {{familiar.fecha_nacimiento}} </li>
+         <li> Nombre: {{familiar.nombre}}, Dirección: {{familiar.direccion}}, Pasaporte: {{familiar.numero_pasaporte}}, Fecha_nacimiento: {{familiar.fecha_nacimiento}} 
+         <a href="/mi-familia/actualizar/{{ familiar.id }}">Actualizar</a>
+         <a href="/mi-familia/actualizar/{{ familiar.id }}">Borrar</a>
+        </li>   
     {% endfor %}
     </ul>
 </body>
