@@ -3,7 +3,7 @@ from ejemplo.models import Familiar
 from ejemplo.forms import Buscar, FamiliarForm    
 from django.views import View
 from django.shortcuts import render, get_object_or_404 # <----- Nuevo import
-from django.views.generic import ListView, CreateView, DeleteView # <----- NUEVO IMPORT
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView # <----- NUEVO IMPORT
 
 def index(request):
     return render(request, "ejemplo/saludar.html")
@@ -122,3 +122,8 @@ class FamiliarCrear(CreateView): #esto reemplaza el comando de alta
 class FamiliarBorrar(DeleteView):
   model = Familiar
   success_url = "/panel-familia"
+
+class FamiliarActualizar(UpdateView):
+  model = Familiar
+  success_url = "/actualizacion_exitosa"
+  fields = ["nombre", "direccion", "numero_pasaporte"]
