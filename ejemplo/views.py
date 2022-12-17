@@ -3,6 +3,7 @@ from ejemplo.models import Familiar
 from ejemplo.forms import Buscar, FamiliarForm    
 from django.views import View
 from django.shortcuts import render, get_object_or_404 # <----- Nuevo import
+from django.views.generic import ListView, CreateView, DeleteView # <----- NUEVO IMPORT
 
 def index(request):
     return render(request, "ejemplo/saludar.html")
@@ -57,7 +58,7 @@ class BuscarFamiliar(View):
 class AltaFamiliar(View):
 
     form_class = FamiliarForm
-    template_name = 'ejemplo/alta_familiar.html'
+    template_name = 'ejemplo/alta_familiar.html' 
     initial = {"nombre":"", "direccion":"", "numero_pasaporte":""}
 
     def get(self, request):
@@ -107,5 +108,17 @@ class BorrarFamiliar(View):
   def get(self, request, pk): 
       familiar = get_object_or_404(Familiar, pk=pk)
       familiar.delete()
-      familiares = Familiar.object.all()
+      familiar = Familiar.object.all()
       return render(request, self.template_name, {'familiar': familiar})
+
+class FamiliarList(ListView):
+  model = Familiar #el objetivo es listar el modelo familiar de forma sencilla usando crud
+
+class FamiliarCrear(CreateView): #esto reemplaza el comando de alta
+  model = Familiar
+  success_url = "/panel-familia" #a donde lo dirijo 
+  fields = ["nombre", "direccion", "numero_pasaporte"] #que campos queremos que se muestren
+
+class FamiliarBorrar(DeleteView):
+  model = Familiar
+  success_url = "/panel-familia"
