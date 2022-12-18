@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 from ejemplo.views import index, saludar_a, sumar, buscar, monstrar_familiares, BuscarFamiliar, AltaFamiliar, ActualizarFamiliar, BorrarFamiliar, FamiliarList, FamiliarCrear, FamiliarBorrar, FamiliarActualizar
+from ejemplo_dos.views import index, PostList, PostCrear
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,6 +34,9 @@ urlpatterns = [
     path('panel-familia/crear', FamiliarCrear.as_view()), # NUEVA RUTA PARA LISTAR FAMILIAR
     path('panel-familia/<int:pk>/borrar', FamiliarBorrar.as_view()), # NUEVA RUTA PARA LISTAR FAMILIAR
     path('panel-familia/<int:pk>/actualizar', FamiliarActualizar.as_view()),
-    path('actualizacion_exitosa/', TemplateView.as_view(template_name = "ejemplo/actualizacion_exitosa.html"))
+    path('actualizacion_exitosa/', TemplateView.as_view(template_name = "ejemplo/actualizacion_exitosa.html")),
+    path('ejemplo-dos/', index),
+    path('ejemplo-dos/listar', PostList.as_view()), 
+    path('ejemplo-dos/crear', PostCrear.as_view()), 
 ]
 
