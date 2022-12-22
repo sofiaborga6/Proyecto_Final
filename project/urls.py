@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 from ejemplo.views import index, saludar_a, sumar, buscar, monstrar_familiares, BuscarFamiliar, AltaFamiliar, ActualizarFamiliar, BorrarFamiliar, FamiliarList, FamiliarCrear, FamiliarBorrar, FamiliarActualizar
-from ejemplo_dos.views import index, PostList, PostCrear
+from ejemplo_dos.views import index, PostList, PostDetalle, PostCrear, PostBorrar, PostActualizar, UserSignUp, UserLogIn, UserLogout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,7 +36,14 @@ urlpatterns = [
     path('panel-familia/<int:pk>/actualizar', FamiliarActualizar.as_view()),
     path('actualizacion_exitosa/', TemplateView.as_view(template_name = "ejemplo/actualizacion_exitosa.html")),
     path('ejemplo-dos/', index),
-    path('ejemplo-dos/listar', PostList.as_view()), 
-    path('ejemplo-dos/crear', PostCrear.as_view()), 
+    path('ejemplo-dos/listar', PostList.as_view(), name="ejemplo-dos-listar"), 
+    path('ejemplo-dos/<int:pk>/detalle/', PostDetalle.as_view(), name="ejemplo-dos-detalle"), 
+    path('ejemplo-dos/crear', PostCrear.as_view(), name="ejemplo-dos-crear"),
+    path('ejemplo-dos/<int:pk>/borrar/', PostBorrar.as_view(), name="ejemplo-dos-borrar"),
+    path('ejemplo-dos/<int:pk>/actualizar/', PostActualizar.as_view(), name="ejemplo-dos-actualizar"),
+    path('ejemplo-dos/signup', UserSignUp.as_view(), name="ejemplo-dos-signup"),
+    path('ejemplo-dos/login', UserLogIn.as_view(), name="ejemplo-dos-login"),
+    path('ejemplo-dos/logout/', UserLogout.as_view(), name="ejemplo-dos-logout"),
+
 ]
 
