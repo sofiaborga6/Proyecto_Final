@@ -128,3 +128,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'ejemplo-dos-login' #con esto le exijo al usuario que ingrese sus credeciales para ver las vistas
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "media/"
