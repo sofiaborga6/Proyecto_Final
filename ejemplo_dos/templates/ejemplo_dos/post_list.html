@@ -6,7 +6,7 @@
 <a href="{% url 'ejemplo-dos-crear' %}">Crear Post</a>
 <a href="{% url 'ejemplo-dos-avatar-actualizar' user.id %}">Actualizar Avatar</a>
 <a href="{% url 'ejemplo-dos-users-actualizar' user.id %}">Actualizar Profile</a>
-<a href="{% url 'ejemplo-dos-mensaje-listar' user.id %}">Mensajes</a>
+<a href="{% url 'ejemplo-dos-mensajes-listar' %}">Mensajes</a>
 {% endif %}
 <ul>
 {% for post in object_list %}
