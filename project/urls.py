@@ -52,6 +52,7 @@ urlpatterns = [
     path('ejemplo-dos/mensajes/listar/', MensajeListar.as_view(), name="ejemplo-dos-mensajes-listar"),
     path('ejemplo-dos/mensaje/crear/', MensajeCrear.as_view(), name="ejemplo-dos-mensajes-crear"),
     path('ejemplo-dos/mensajes/<int:pk>/borrar/', MensajeBorrar.as_view(), name="ejemplo-dos-mensajes-borrar"),
+    path('ejemplo-dos/about', TemplateView.as_view(template_name='ejemplo_dos/about.html'), name="ejemplo-dos-about"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
