@@ -39,8 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ejemplo.apps.EjemploConfig', # ESTA ES LA NUEVA APP !!
-    'ejemplo_dos.apps.EjemploDosConfig',
+    'curso.apps.CursoConfig',
 ]
 
 MIDDLEWARE = [
@@ -127,7 +126,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = 'ejemplo-dos-login' #con esto le exijo al usuario que ingrese sus credeciales para ver las vistas
+LOGIN_URL = 'curso-login' #con esto le exijo al usuario que ingrese sus credeciales para ver las vistas
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "media/"

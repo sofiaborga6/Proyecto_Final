@@ -1,0 +1,23 @@
+{% extends 'curso/base.html'%}
+
+
+{% block contenido %}
+{% if user.is_authenticated %}
+<a href="{% url 'curso-crear' %}">Crear Post</a>
+<a href="{% url 'curso-avatar-actualizar' user.id %}">Actualizar Avatar</a>
+<a href="{% url 'curso-users-actualizar' user.id %}">Actualizar Profile</a>
+<a href="{% url 'curso-mensajes-listar' %}">Mensajes</a>
+{% endif %}
+<ul>
+{% for post in object_list %}
+    <li>
+        {{post.publicado_el}} - - {{post.titulo}}  
+        {% if user.is_authenticated %}
+            <a href="{% url 'curso-borrar' post.id %}">Borrar</a>
+            <a href="{% url 'curso-actualizar' post.id %}">Actualizar</a>
+        {% endif %}
+        <a href="{% url 'curso-detalle' post.id %}">Detalle</a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

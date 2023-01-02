@@ -18,41 +18,27 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
-from ejemplo.views import index, saludar_a, sumar, buscar, monstrar_familiares, BuscarFamiliar, AltaFamiliar, ActualizarFamiliar, BorrarFamiliar, FamiliarList, FamiliarCrear, FamiliarBorrar, FamiliarActualizar 
-from ejemplo_dos.views import index, PostList, PostDetalle, PostCrear, PostBorrar, PostActualizar, UserSignUp, UserLogIn, UserLogout, AvatarActualizar, UserActualizar, MensajeDetalle, MensajeListar, MensajeCrear, MensajeBorrar
+from curso.views import index, PostList, PostDetalle, PostCrear, PostBorrar, PostActualizar, UserSignUp, UserLogIn, UserLogout, AvatarActualizar, UserActualizar, MensajeDetalle, MensajeListar, MensajeCrear, MensajeBorrar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('saludar/', index), # ESTA ES LA NUEVA FUNCTION
-    path('saludar_a/<nombre>',saludar_a), 
-    path('sumar/<int:a>/<int:b>/', sumar),
-    path('buscar/', buscar),
-    path('mi_familia/', monstrar_familiares),
-    path('mi-familia/buscar', BuscarFamiliar.as_view()), #as_view transforma la clase en una funcion
-    path('mi-familia/alta', AltaFamiliar.as_view()),# NUEVA RUTA PARA BUSCAR FAMILIAR
-    path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()), # NUEVA RUTA PARA BUSCAR FAMILIAR
-    path('mi-familia/borrar/<int:pk>', BorrarFamiliar.as_view()),
-    path('panel-familia/', FamiliarList.as_view()),
-    path('panel-familia/crear', FamiliarCrear.as_view()), # NUEVA RUTA PARA LISTAR FAMILIAR
-    path('panel-familia/<int:pk>/borrar', FamiliarBorrar.as_view()), # NUEVA RUTA PARA LISTAR FAMILIAR
-    path('panel-familia/<int:pk>/actualizar', FamiliarActualizar.as_view()),
-    path('actualizacion_exitosa/', TemplateView.as_view(template_name = "ejemplo/actualizacion_exitosa.html")),
-    path('ejemplo-dos/', index, name="ejemplo-dos-index"),
-    path('ejemplo-dos/listar', PostList.as_view(), name="ejemplo-dos-listar"), 
-    path('ejemplo-dos/<int:pk>/detalle/', PostDetalle.as_view(), name="ejemplo-dos-detalle"), 
-    path('ejemplo-dos/crear', PostCrear.as_view(), name="ejemplo-dos-crear"),
-    path('ejemplo-dos/<int:pk>/borrar/', PostBorrar.as_view(), name="ejemplo-dos-borrar"),
-    path('ejemplo-dos/<int:pk>/actualizar/', PostActualizar.as_view(), name="ejemplo-dos-actualizar"),
-    path('ejemplo-dos/signup', UserSignUp.as_view(), name="ejemplo-dos-signup"),
-    path('ejemplo-dos/login', UserLogIn.as_view(), name="ejemplo-dos-login"),
-    path('ejemplo-dos/logout/', UserLogout.as_view(), name="ejemplo-dos-logout"),
-    path('ejemplo-dos/avatares/<int:pk>/actualizar/', AvatarActualizar.as_view(), name="ejemplo-dos-avatar-actualizar"),
-    path('ejemplo-dos/users/<int:pk>/actualizar/', UserActualizar.as_view(), name="ejemplo-dos-users-actualizar"),
-    path('ejemplo-dos/mensajes/<int:pk>/detalle/', MensajeDetalle.as_view(), name="ejemplo-dos-mensajes-detalle"),
-    path('ejemplo-dos/mensajes/listar/', MensajeListar.as_view(), name="ejemplo-dos-mensajes-listar"),
-    path('ejemplo-dos/mensaje/crear/', MensajeCrear.as_view(), name="ejemplo-dos-mensajes-crear"),
-    path('ejemplo-dos/mensajes/<int:pk>/borrar/', MensajeBorrar.as_view(), name="ejemplo-dos-mensajes-borrar"),
-    path('ejemplo-dos/about', TemplateView.as_view(template_name='ejemplo_dos/about.html'), name="ejemplo-dos-about"),
+    ##path('actualizacion_exitosa/', TemplateView.as_view(template_name = "ejemplo/actualizacion_exitosa.html")),
+    path('curso/', index, name="curso-index"),
+    path('curso/listar', PostList.as_view(), name="curso-listar"), 
+    path('curso/<int:pk>/detalle/', PostDetalle.as_view(), name="curso-detalle"), 
+    path('curso/crear', PostCrear.as_view(), name="curso-crear"),
+    path('curso/<int:pk>/borrar/', PostBorrar.as_view(), name="curso-borrar"),
+    path('curso/<int:pk>/actualizar/', PostActualizar.as_view(), name="curso-actualizar"),
+    path('curso/signup', UserSignUp.as_view(), name="curso-signup"),
+    path('curso/login', UserLogIn.as_view(), name="curso-login"),
+    path('curso/logout/', UserLogout.as_view(), name="curso-logout"),
+    path('curso/avatares/<int:pk>/actualizar/', AvatarActualizar.as_view(), name="curso-avatar-actualizar"),
+    path('curso/users/<int:pk>/actualizar/', UserActualizar.as_view(), name="curso-users-actualizar"),
+    path('curso/mensajes/<int:pk>/detalle/', MensajeDetalle.as_view(), name="curso-mensajes-detalle"),
+    path('curso/mensajes/listar/', MensajeListar.as_view(), name="curso-mensajes-listar"),
+    path('curso/mensaje/crear/', MensajeCrear.as_view(), name="curso-mensajes-crear"),
+    path('curso/mensajes/<int:pk>/borrar/', MensajeBorrar.as_view(), name="curso-mensajes-borrar"),
+    path('curso/about', TemplateView.as_view(template_name='curso/about.html'), name="curso-about"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
